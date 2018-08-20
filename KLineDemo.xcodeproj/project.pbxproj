@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E317F5E9211C3B990033F26F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E317F5E8211C3B990033F26F /* AppDelegate.m */; };
+		E317F5EC211C3B990033F26F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E317F5EB211C3B990033F26F /* ViewController.m */; };
+		E317F5EF211C3B990033F26F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E317F5ED211C3B990033F26F /* Main.storyboard */; };
+		E317F5F1211C3B990033F26F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E317F5F0211C3B990033F26F /* Assets.xcassets */; };
+		E317F5F4211C3B990033F26F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E317F5F2211C3B990033F26F /* LaunchScreen.storyboard */; };
+		E317F5F7211C3B990033F26F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E317F5F6211C3B990033F26F /* main.m */; };
+		E317F601211C3C020033F26F /* data.txt in Resources */ = {isa = PBXBuildFile; fileRef = E317F600211C3C020033F26F /* data.txt */; };
+		E317F604211C3C320033F26F /* KLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E317F603211C3C320033F26F /* KLineModel.m */; };
+		E317F607211C3D160033F26F /* GetKlineData.m in Sources */ = {isa = PBXBuildFile; fileRef = E317F606211C3D160033F26F /* GetKlineData.m */; };
+		E3794335211D6E1C00B97733 /* AveragePriceLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E3794334211D6E1C00B97733 /* AveragePriceLayer.m */; };
+		E3794338211D813400B97733 /* KLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3794337211D813400B97733 /* KLineView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E317F5E4211C3B990033F26F /* KLineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KLineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E317F5E7211C3B990033F26F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E317F5E8211C3B990033F26F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E317F5EA211C3B990033F26F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E317F5EB211C3B990033F26F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E317F5EE211C3B990033F26F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E317F5F0211C3B990033F26F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E317F5F3211C3B990033F26F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E317F5F5211C3B990033F26F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E317F5F6211C3B990033F26F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E317F600211C3C020033F26F /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
+		E317F602211C3C320033F26F /* KLineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineModel.h; sourceTree = "<group>"; };
+		E317F603211C3C320033F26F /* KLineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineModel.m; sourceTree = "<group>"; };
+		E317F605211C3D160033F26F /* GetKlineData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetKlineData.h; sourceTree = "<group>"; };
+		E317F606211C3D160033F26F /* GetKlineData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetKlineData.m; sourceTree = "<group>"; };
+		E3794333211D6E1C00B97733 /* AveragePriceLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AveragePriceLayer.h; sourceTree = "<group>"; };
+		E3794334211D6E1C00B97733 /* AveragePriceLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AveragePriceLayer.m; sourceTree = "<group>"; };
+		E3794336211D813400B97733 /* KLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLineView.h; sourceTree = "<group>"; };
+		E3794337211D813400B97733 /* KLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLineView.m; sourceTree = "<group>"; };
+		E379433C211D8C8800B97733 /* lineDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lineDataSource.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E317F5E1211C3B990033F26F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E317F5DB211C3B990033F26F = {
+			isa = PBXGroup;
+			children = (
+				E317F5E6211C3B990033F26F /* KLineDemo */,
+				E317F5E5211C3B990033F26F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E317F5E5211C3B990033F26F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E317F5E4211C3B990033F26F /* KLineDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E317F5E6211C3B990033F26F /* KLineDemo */ = {
+			isa = PBXGroup;
+			children = (
+				E317F5FF211C3BE90033F26F /* View */,
+				E317F5FE211C3BE30033F26F /* Model */,
+				E317F5FD211C3BD80033F26F /* Data */,
+				E317F5E7211C3B990033F26F /* AppDelegate.h */,
+				E317F5E8211C3B990033F26F /* AppDelegate.m */,
+				E317F5EA211C3B990033F26F /* ViewController.h */,
+				E317F5EB211C3B990033F26F /* ViewController.m */,
+				E317F5ED211C3B990033F26F /* Main.storyboard */,
+				E317F5F0211C3B990033F26F /* Assets.xcassets */,
+				E317F5F2211C3B990033F26F /* LaunchScreen.storyboard */,
+				E317F5F5211C3B990033F26F /* Info.plist */,
+				E317F5F6211C3B990033F26F /* main.m */,
+			);
+			path = KLineDemo;
+			sourceTree = "<group>";
+		};
+		E317F5FD211C3BD80033F26F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E317F600211C3C020033F26F /* data.txt */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		E317F5FE211C3BE30033F26F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E317F602211C3C320033F26F /* KLineModel.h */,
+				E317F603211C3C320033F26F /* KLineModel.m */,
+				E317F605211C3D160033F26F /* GetKlineData.h */,
+				E317F606211C3D160033F26F /* GetKlineData.m */,
+				E379433C211D8C8800B97733 /* lineDataSource.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E317F5FF211C3BE90033F26F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E3794333211D6E1C00B97733 /* AveragePriceLayer.h */,
+				E3794334211D6E1C00B97733 /* AveragePriceLayer.m */,
+				E3794336211D813400B97733 /* KLineView.h */,
+				E3794337211D813400B97733 /* KLineView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E317F5E3211C3B990033F26F /* KLineDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E317F5FA211C3B990033F26F /* Build configuration list for PBXNativeTarget "KLineDemo" */;
+			buildPhases = (
+				E317F5E0211C3B990033F26F /* Sources */,
+				E317F5E1211C3B990033F26F /* Frameworks */,
+				E317F5E2211C3B990033F26F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KLineDemo;
+			productName = KLineDemo;
+			productReference = E317F5E4211C3B990033F26F /* KLineDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E317F5DC211C3B990033F26F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = shiguang;
+				TargetAttributes = {
+					E317F5E3211C3B990033F26F = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E317F5DF211C3B990033F26F /* Build configuration list for PBXProject "KLineDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E317F5DB211C3B990033F26F;
+			productRefGroup = E317F5E5211C3B990033F26F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E317F5E3211C3B990033F26F /* KLineDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E317F5E2211C3B990033F26F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E317F601211C3C020033F26F /* data.txt in Resources */,
+				E317F5F4211C3B990033F26F /* LaunchScreen.storyboard in Resources */,
+				E317F5F1211C3B990033F26F /* Assets.xcassets in Resources */,
+				E317F5EF211C3B990033F26F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E317F5E0211C3B990033F26F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E317F5EC211C3B990033F26F /* ViewController.m in Sources */,
+				E317F5F7211C3B990033F26F /* main.m in Sources */,
+				E317F5E9211C3B990033F26F /* AppDelegate.m in Sources */,
+				E3794338211D813400B97733 /* KLineView.m in Sources */,
+				E317F607211C3D160033F26F /* GetKlineData.m in Sources */,
+				E317F604211C3C320033F26F /* KLineModel.m in Sources */,
+				E3794335211D6E1C00B97733 /* AveragePriceLayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E317F5ED211C3B990033F26F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E317F5EE211C3B990033F26F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E317F5F2211C3B990033F26F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E317F5F3211C3B990033F26F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E317F5F8211C3B990033F26F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E317F5F9211C3B990033F26F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E317F5FB211C3B990033F26F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3MBF9B5ZRL;
+				INFOPLIST_FILE = KLineDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.wsg.KLineDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E317F5FC211C3B990033F26F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3MBF9B5ZRL;
+				INFOPLIST_FILE = KLineDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = test.wsg.KLineDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E317F5DF211C3B990033F26F /* Build configuration list for PBXProject "KLineDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E317F5F8211C3B990033F26F /* Debug */,
+				E317F5F9211C3B990033F26F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E317F5FA211C3B990033F26F /* Build configuration list for PBXNativeTarget "KLineDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E317F5FB211C3B990033F26F /* Debug */,
+				E317F5FC211C3B990033F26F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E317F5DC211C3B990033F26F /* Project object */;
+}
