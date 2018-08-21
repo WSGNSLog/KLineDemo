@@ -47,7 +47,7 @@
         selector = NSSelectorFromString(@"_deviceInfoForKey:");
     }
     if ([device respondsToSelector:selector]) {
-        NSLog(@"DeviceColor: %@ DeviceEnclosureColor: %@", [device performSelector:selector withObject:@"DeviceColor"], [device performSelector:selector withObject:@"DeviceEnclosureColor"]);
+        //NSLog(@"DeviceColor: %@ DeviceEnclosureColor: %@", [device performSelector:selector withObject:@"DeviceColor"], [device performSelector:selector withObject:@"DeviceEnclosureColor"]);
         UIColor *color = [self colorWithHexString:[device performSelector:selector withObject:@"DeviceEnclosureColor"]];
         self.view.backgroundColor = color;
     }

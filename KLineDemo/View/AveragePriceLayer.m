@@ -54,6 +54,7 @@ static const NSInteger twentyLine = 19;
     
 }
 - (void)loadLayerPreMigration:(NSInteger)offsetX KmodelArray:(NSMutableArray<KLineModel *> *)array{
+    NSLog(@"%ld",offsetX);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         __block CGFloat fiveLineFloat = 0;
         __block CGFloat TenLineFloat  = 0;
@@ -62,6 +63,10 @@ static const NSInteger twentyLine = 19;
         UIBezierPath *fivePath = [UIBezierPath bezierPath];
         UIBezierPath *tenPath = [UIBezierPath bezierPath];
         UIBezierPath *twentyPath = [UIBezierPath bezierPath];
+        
+        __block NSInteger FiveCount = 0;
+        __block NSInteger Tencount = 0;
+        __block NSInteger Twenrycount = 0;
         
         NSInteger space = KlineCellSpace + KlineCellWidth;
         NSInteger halfWidth = KlineCellWidth/2.0;
@@ -94,10 +99,84 @@ static const NSInteger twentyLine = 19;
         if (starIndexTwenty < 0) {
             starIndexTwenty = 0;
         }
-        //FIXME:todo
+        
         [array enumerateObjectsUsingBlock:^(KLineModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
+            //5的均线
+            if (idx >= starIndex) {
+                fiveLineFloat += obj.LastPrice;
+                FiveCount ++;
+                if (FiveCount >= 5) {
+                    //下标开始的位置
+                    CGFloat fivePrice_x = space*showIndex*self.x_scale+halfWidth;
+                    
+                    CGFloat fivePrice_y = (fiveLineFloat/5-self.lowerPrice)/self.h;
+                    
+                    CGPoint point = CGPointMake(fivePrice_x, fivePrice_y);
+                    
+                    if (FiveCount == 5) {
+                        [fivePath moveToPoint:point];
+                    }else{
+                        [fivePath addLineToPoint:point];
+                    }
+                    fiveLineFloat -= [[array objectAtIndex:idx-fiveLine] LastPrice];
+                    showIndex ++;
+                }
+            }
+            //10
+            if (idx >= starIndexTen) {
+                TenLineFloat += obj.LastPrice;
+                Tencount ++;
+                if (Tencount >= 10) {
+                    //下标开始的位置
+                    CGFloat TenPrice_x = space*showIndexTen*self.x_scale+halfWidth;
+                    
+                    CGFloat TenPrice_y = (TenLineFloat/10-self.lowerPrice)/self.h;
+                    
+                    CGPoint point = CGPointMake(TenPrice_x, TenPrice_y);
+                    
+                    if (Tencount == 10) {
+                        [tenPath moveToPoint:point];
+                    }else{
+                        [tenPath addLineToPoint:point];
+                    }
+                    TenLineFloat -= [[array objectAtIndex:idx-tenLine] LastPrice];
+                    showIndexTen ++;
+                }
+            }
+            if (idx >= starIndexTwenty) {
+                TwenryFloat += obj.LastPrice;
+                Twenrycount ++;
+                if (Twenrycount >= 20) {
+                    //下标开始的位置
+                    CGFloat TwenryPrice_x = space*showIndexTwenty*self.x_scale+halfWidth;
+                    
+                    CGFloat TwenryPrice_y = (TwenryFloat/20-self.lowerPrice)/self.h;
+                    
+                    CGPoint point = CGPointMake(TwenryPrice_x, TwenryPrice_y);
+                    
+                    if (Twenrycount == 20) {
+                        [twentyPath moveToPoint:point];
+                    }else{
+                        [twentyPath addLineToPoint:point];
+                    }
+                    TwenryFloat -= [[array objectAtIndex:idx-twentyLine] LastPrice];
+                    showIndexTwenty ++;
+                }
+            }
+            
         }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.fiveMinAP.path = fivePath.CGPath;
+            self.TenMinAP.path  = tenPath.CGPath;
+            self.TwentyMinAP.path = twentyPath.CGPath;
+            
+            [fivePath removeAllPoints];
+            [tenPath removeAllPoints];
+            [twentyPath removeAllPoints];
+        });
+        
+        [array removeAllObjects];
     });
 }
 - (UIColor *) colorWithHexString: (NSString *)color

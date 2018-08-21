@@ -74,12 +74,41 @@ static const CGFloat scale_Max = 1;//最大缩放量
 - (void)panGesture:(UIPanGestureRecognizer *)pan{
     
     //十字光标开启 进入滑动显示对应的model数据
-    
+    if (self.isShowTrackingCross) {
+        //记录初始点
+        CGPoint point = [pan locationInView:pan.view];
+        if (pan.state == UIGestureRecognizerStateChanged) {
+            //移动十字光标
+            [self TrackingCrossFromPoint:point];
+        }else if(pan.state == UIGestureRecognizerStateEnded){
+            //手指离开后 3秒后移除十字光标
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.ShowTrackingCross = NO;
+            });
+        }
+    }else{
+        //十字光标关闭 拉动显示图显示其它数据
+        //判断左右移动
+        CGPoint point = [pan translationInView:pan.view];
+        //更改移动点
+        [self offset_xPoint:point];
+        
+    }
 }
 
 //缩放
 - (void)pinchAction:(UIPinchGestureRecognizer *)pinch{
-    
+    @synchronized (self) {
+        //查看缩放比例
+        self.x_scale *= pinch.scale;
+        //调整比例
+        if (_x_scale < scale_Min) {
+            self.x_scale = scale_Min;
+        }else if (_x_scale > scale_Max){
+            self.x_scale = scale_Max;
+        }
+    }
+    [self reload];
 }
 //重新绘制
 - (void)reload{
@@ -143,13 +172,25 @@ static const CGFloat scale_Max = 1;//最大缩放量
         //继续走流程
         [self calculateHeightAndLowerFromArray:self.KlineShowArray];
         
-        //todo
         //这是均线的
         [self initAP];
     }
 }
 - (void)initAP{
+    NSInteger apIndex = self.OffsetIndex-20;
+    if (apIndex<0) {
+        apIndex = 0;
+    }
+    NSMutableArray *apArray = [NSMutableArray array];
+    for (NSInteger i = apIndex; i<self.OffsetIndex; i++) {
+        [apArray addObject:[self.delegate LineView:self cellAtIndex:i]];
+    }
+    [apArray addObjectsFromArray:self.KlineShowArray];
     
+    self.APLayer.x_scale = self.x_scale;
+    self.APLayer.lowerPrice = self.lowerPrice;
+    self.APLayer.h = self.h;
+    [self.APLayer loadLayerPreMigration:apArray.count-self.KlineShowArray.count  KmodelArray:apArray];
 }
 //计算最高最低
 - (void)calculateHeightAndLowerFromArray:(NSArray *)array{
@@ -260,5 +301,95 @@ static const CGFloat scale_Max = 1;//最大缩放量
         self.ShapeLayer.strokeColor = [UIColor colorWithRed:40/255.0 green:135/255.0 blue:255/255.0 alpha:1].CGColor;
         self.ShapeLayer.fillColor = [UIColor clearColor].CGColor;
     }
+}
+//替换以后一个点
+- (void)replacementLastPoint:(KLineModel *)model{
+    //如果父视图存在
+    if (self.ShapeLayer) {
+        //删除最后一个点
+        NSArray *layerArray = self.ShapeLayer.sublayers;
+        if (layerArray) {
+            if (layerArray.count >0) {
+                CAShapeLayer *Slayer = (CAShapeLayer *)[self.ShapeLayer.sublayers lastObject];
+                [Slayer removeFromSuperlayer];
+            }
+        }
+    }else{
+        [self initShapeLayer];
+    }
+    //生成新的点 添加到父视图
+    CAShapeLayer *layer = [self GetShapeLayerFromModel:model Index:self.KlineShowArray.count-1];
+    [self.ShapeLayer addSublayer:layer];
+}
+
+//隐藏十字光标
+- (void)setShowTrackingCross:(BOOL)ShowTrackingCross{
+    _ShowTrackingCross = ShowTrackingCross;
+    if (ShowTrackingCross) {
+        CGPoint centerPoint = self.center;
+        [self TrackingCrossFromPoint:centerPoint];
+    }else{
+        if (self.TrackingCrosslayer) {
+            [self.TrackingCrosslayer removeFromSuperlayer];
+        }
+    }
+}
+#pragma mark- 十字光标
+//十字光标
+- (void)TrackingCrossFromPoint:(CGPoint)point{
+    if (self.KlineShowArray.count == 0) {
+        return;
+    }
+    //通过point逆推得出index 现在的下标/(单元大小)*缩放量
+    NSInteger index = point.x/(KlineCellSpace+KlineCellWidth)*self.x_scale;
+    //防止数组越界
+    if (index > self.KlineShowArray.count-1) {
+        index = self.KlineShowArray.count-1;
+    }
+    if (index < 0) {
+        return;
+    }
+    //获得对应的model
+    KLineModel *model = self.KlineShowArray[index];
+    
+    //获取x坐标 和这个model的最新价或者其它价格对应的y  这里展示最新价
+    CGPoint point_X = CGPointMake(0, (model.LastPrice-self.lowerPrice)/self.h);
+    CGPoint point_endX = CGPointMake(self.ShowWidth, (model.LastPrice-self.lowerPrice)/self.h);
+    
+    //绘图
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:point_X];
+    [path addLineToPoint:point_endX];
+    
+    
+    CGPoint point_Y = CGPointMake(point.x, 0);
+    CGPoint point_endY = CGPointMake(point.x, self.ShowHeight);
+    
+    [path moveToPoint:point_Y];
+    [path addLineToPoint:point_endY];
+    
+    path.lineWidth = 0.75;
+    path.lineCapStyle = kCGLineCapRound; //线条拐角
+    path.lineJoinStyle = kCGLineCapRound; //终点处理
+    
+    //展示十字光标
+    self.TrackingCrosslayer.path = nil;
+    
+    if (!self.TrackingCrosslayer) {
+        self.TrackingCrosslayer = [CAShapeLayer layer];
+        self.TrackingCrosslayer.frame = CGRectMake(0, 0, self.ShowWidth, self.ShowHeight);
+        self.TrackingCrosslayer.strokeColor = [UIColor colorWithRed:40/255.0 green:135/255.0 blue:255/255.0 alpha:1].CGColor;
+        self.TrackingCrosslayer.fillColor = [UIColor clearColor].CGColor;
+        
+    }
+    
+    self.TrackingCrosslayer.path = path.CGPath;
+    
+    [self.layer addSublayer:self.TrackingCrosslayer];
+    //把值传递给外界
+    if ([self.delegate respondsToSelector:@selector(TrackingCrossIndexModel:IndexPoint:)]) {
+        [self.delegate TrackingCrossIndexModel:model IndexPoint:CGPointMake(point_X.y, point_Y.x)];
+    }
+    
 }
 @end
